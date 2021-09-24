@@ -1,0 +1,25 @@
+{
+    "short_name": "金門行動旅服",
+    "name": "金門行動旅服",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "start_url": "./",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "assets/images/icon-128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/icon-256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
