@@ -9,6 +9,7 @@ const HomePage = (props) => {
 	const [count,setCountData] = useState(0)
 	const [currentCityName, setCurrentCityName] = useState('')
 	useEffect(() => {
+		// const timer = setInterval(..)
 		fetch('static-api/forecast.json')
 			.then((resp) => resp.json())
 			.then(({ success, data }) => {
@@ -16,12 +17,14 @@ const HomePage = (props) => {
 				setCurrentCityName(data[0].location)
 			})
 			.catch(console.error)
+		// return ()=>{
+		// 	clearInterval(timer)
+		// }
 	}, [])
 	const wtSvg=`icon fz-40px fz-sm-64px  text-center  mt-sm-0  py-1 px-2 wt-${data?.[count]?.Wx.elementValue[1].value}`
 	
 	return (
 		<div className="p-4">
-			<Welcome name={currentCityName}/>
 			<div className="d-md-flex justify-content-center align-items-center my-2 mt-sm-0">
 				<div className="d-flex justify-content-center align-items-center my-2 mt-sm-0">
 					<select className="form-select p-1 border rounded text-center mx-2" onChange={(e) => {
@@ -40,6 +43,7 @@ const HomePage = (props) => {
 					</div>
 				</div>
 			</div>
+			<Welcome name={currentCityName} value={data?.[count]?.T.elementValue.value}/>
 			<Clock/>
 		</div>
 	)
