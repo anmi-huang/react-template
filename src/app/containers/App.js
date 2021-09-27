@@ -1,5 +1,5 @@
 import React from 'react'
-import HomePage from 'views/home/index'
+import HomePage from 'views/home/weather'
 
 const App = (props) => <HomePage />
 
