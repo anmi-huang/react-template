@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { set } from 'react-ga'
-// import Welcome from 'components/Welcome'
-// import Wtsvg from 'components/Wtsvg'
 import Weather from '../../components/Weather'
+// import EXweather from '../../components/EXweather'
 
 const HomePage = (props) => {
     const [data, setData] = useState([])
@@ -20,7 +19,6 @@ const HomePage = (props) => {
 
     const toggleClass = () => {
         setActive(!isActive)
-        console.log('123')
     }
 
     return (
