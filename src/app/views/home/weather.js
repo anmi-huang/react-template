@@ -6,8 +6,8 @@ import Weather from '../../components/Weather'
 
 const HomePage = (props) => {
     const [data, setData] = useState([])
-    const [count, setCountData] = useState(0)
     const [city, setCity] = useState({})
+    const [isActive, setActive] = useState(false)
 
     useEffect(() => {
         fetch('static-api/forecast.json')
@@ -18,31 +18,37 @@ const HomePage = (props) => {
             .catch(console.error)
     }, [])
 
+    const toggleClass = () => {
+        setActive(!isActive)
+        console.log('123')
+    }
+
     return (
-        <div className="p-4 position-relative">
-            <div className="justify-content-center align-items-center my-2 ">
+        <div>
+            <ul className="justify-content-center align-items-center my-2  p-4 ">
                 {data.map((item, i) => (
-                    <option
+                    <li
                         key={i}
                         value={i}
                         className="form-select py-1 px-4 border rounded text-center my-2"
-                        onClick={(e) => {
-                            const id = e.target.value
-                            setCountData(id)
+                        onClick={() => {
+                            const countData = data[i]
                             setCity({
-                                location: data[id].location,
-                                avgT: data?.[count]?.T.elementValue.value,
-                                minT: data?.[count]?.MinT.elementValue.value,
-                                maxT: data?.[count]?.MaxT.elementValue.value,
-                                svg: data?.[count]?.Wx.elementValue[1].value,
+                                location: data[i].location,
+                                avgT: countData.T.elementValue.value,
+                                minT: countData.MinT.elementValue.value,
+                                maxT: countData.MaxT.elementValue.value,
+                                svg: countData.Wx.elementValue[1].value,
+                                description: countData.WeatherDescription.elementValue.value,
                             })
+                            toggleClass()
                         }}
                     >
                         {item.location}
-                    </option>
+                    </li>
                 ))}
-            </div>
-            <Weather value={city} className="position-absolute wt-position" />
+            </ul>
+            <Weather value={city} name={isActive} onClose={toggleClass}></Weather>
         </div>
     )
 }

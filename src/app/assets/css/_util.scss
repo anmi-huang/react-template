@@ -374,3 +374,20 @@ img.fit-contain,
     padding-right: calc((100vw - 100%) / 2) !important;
 }
 
+
+.trs-x-100{
+    transform: translateX(100%);
+}
+.wt-div{
+    width:375px;
+    height:100%;
+    position: fixed;
+    top: 0;
+    transform: translateX(100%);
+}
+.wt-hide{
+    width:375px;
+    height:100%;
+    position: fixed;
+    top: 0;
+}
