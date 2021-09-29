@@ -1,12 +1,14 @@
 import React from 'react'
 import Wtsvg from 'components/Wtsvg'
-function Weather({ value, name, onClose }) {
-    const wtHide = ` trs-x-100 wt-hide `
-    const wtDiv = `bg-secondary py-2 text-center wt-div `
+function Weather({ value, isActive, onClose }) {
     const { location, svg, avgT, minT, maxT, description } = value
 
     return (
-        <div className={name ? wtDiv : wtHide}>
+        <div
+            className={`${
+                isActive ? '' : 'trs-x-100'
+            } scroll-blk fixed-top w-100 h-100 bg-secondary py-2 text-center trs-all`}
+        >
             <i className="justify-content-start p-4 icon icon-arrow-left" onClick={onClose}></i>
             <div className="text-center px-2 py-1 fz-32px">{location}</div>
             <Wtsvg value={svg} />

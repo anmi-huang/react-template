@@ -1,6 +1,6 @@
 import React from 'react'
-import HomePage from 'views/home/weather'
+import Air from 'views/home/Air'
 
-const App = (props) => <HomePage />
+const App = (props) => <Air />
 
 export default React.memo(App)

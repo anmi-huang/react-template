@@ -151,8 +151,7 @@ export default {
 
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: isProd ? './' : 'http://0.0.0.0:3000/'
+        path: path.resolve(__dirname, 'dist')
     },
     plugins: removeEmpty([
         new webpack.HotModuleReplacementPlugin(),
@@ -192,6 +191,7 @@ export default {
         hot: true,
         port: 3000,
         host: '0.0.0.0',
+        open:true,
         //https: true,
         headers: { 'Access-Control-Allow-Origin': '*' },
         before: (app) => {
