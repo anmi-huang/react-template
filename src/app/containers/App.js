@@ -1,6 +1,6 @@
 import React from 'react'
-import Air from 'views/home/Air'
+import ToDoList from 'views/home/ToDoList'
 
-const App = (props) => <Air />
+const App = (props) => <ToDoList />
 
 export default React.memo(App)
