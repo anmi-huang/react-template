@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 
 const ToDoList = (props) => {
     const [addData, handleChange] = useState(null)
-    const [clickData, handleClick] = useState(null)
     const [todo, setTodo] = useState([])
 
     const setLocalStorage = () => {
@@ -24,19 +23,12 @@ const ToDoList = (props) => {
                 <button
                     className=" btn rounded"
                     onClick={() => {
-                        const todoProxy = [...todo]
-                        //handleClick(addData)
-                        console.log(addData)
-                        todoProxy.push(addData)
-                        //setTodo(todoProxy)
-
+                        // const todoProxy = [...todo, addData]
+                        // todoProxy.push(addData)
+                        // setTodo(todoProxy)
                         setTodo((arr) => {
-                            //console.log(arr)
-                            arr.push(addData)
-                            //console.log(arr)
-                            return arr
+                            return [...arr, addData]
                         })
-
                         setLocalStorage()
                     }}
                 >
@@ -52,10 +44,10 @@ const ToDoList = (props) => {
                         <button
                             key={i}
                             className="btn"
-                            onClick={(i) => {
+                            onClick={() => {
                                 const todoProxy = [...todo]
                                 todoProxy.splice(i, 1)
-                                // todo.filter((i, index) => index !== i)
+
                                 setTodo(todoProxy)
                                 setLocalStorage()
                             }}
