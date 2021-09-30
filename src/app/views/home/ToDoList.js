@@ -45,9 +45,9 @@ const ToDoList = (props) => {
                             key={i}
                             className="btn"
                             onClick={() => {
-                                const todoProxy = [...todo]
-                                todoProxy.splice(i, 1)
-
+                                // const todoProxy = [...todo]
+                                // todoProxy.splice(i, 1)
+                                const todoProxy = [...todo].slice(0, i).concat([...todo].slice(i + 1))
                                 setTodo(todoProxy)
                                 setLocalStorage()
                             }}
