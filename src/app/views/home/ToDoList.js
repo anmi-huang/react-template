@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 const ToDoList = (props) => {
     const [addData, handleChange] = useState(null)
     const [todo, setTodo] = useState([])
+
     useEffect(() => {
         setTodo(JSON.parse(localStorage.getItem('listData')) || [])
     }, [])
@@ -16,20 +17,19 @@ const ToDoList = (props) => {
         <div className="p-4">
             <div className="d-flex">
                 <input
+                    value={addData}
                     type="text "
                     className="border rounded pl-2"
                     placeholder="輸入代辦事項"
                     onChange={(e) => handleChange(e.target.value)}
                 />
                 <button
-                    className=" btn rounded"
+                    className="btn rounded"
                     onClick={() => {
-                        // const todoProxy = [...todo, addData]
-                        // todoProxy.push(addData)
-                        // setTodo(todoProxy)
                         setTodo((arr) => {
                             return [...arr, addData]
                         })
+                        handleChange(' ')
                     }}
                 >
                     新增
