@@ -1,16 +1,17 @@
-import { data } from 'flickity'
 import React, { useEffect, useState } from 'react'
 
 const ToDoList = (props) => {
     const [addData, handleChange] = useState(null)
     const [todo, setTodo] = useState([])
-
-    const setLocalStorage = () => {
-        localStorage.setItem('list-data', JSON.stringify(todo))
-    }
     useEffect(() => {
-        console.log(todo)
+        setTodo(JSON.parse(localStorage.getItem('listData')) || [])
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('listData', JSON.stringify(todo))
+        console.log('todo', todo)
     }, [todo])
+
     return (
         <div className="p-4">
             <div className="d-flex">
@@ -29,7 +30,6 @@ const ToDoList = (props) => {
                         setTodo((arr) => {
                             return [...arr, addData]
                         })
-                        setLocalStorage()
                     }}
                 >
                     新增
@@ -49,7 +49,6 @@ const ToDoList = (props) => {
                                 // todoProxy.splice(i, 1)
                                 const todoProxy = [...todo].slice(0, i).concat([...todo].slice(i + 1))
                                 setTodo(todoProxy)
-                                setLocalStorage()
                             }}
                         >
                             刪除
