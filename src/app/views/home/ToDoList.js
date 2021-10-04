@@ -56,16 +56,23 @@ const ToDoList = (props) => {
                                 type="checkbox"
                                 className="hide-switch"
                                 onChange={(e) => {
-                                    const id = e.target.value
+                                    const idItem = e.target.value
                                     const idTodo = [...todo]
-                                    console.log('idTodo[id]', idTodo[id])
-                                    idTodo[id].isCompleted = !idTodo[id].isCompleted
+                                    console.log('idTodo[id]', idTodo[idItem])
+                                    idTodo[idItem].isCompleted = !idTodo[idItem].isCompleted
                                     setTodo(idTodo)
                                 }}
                                 checked={item.isCompleted}
                                 value={i}
+                                name={i}
+                                id={i}
                             />
-                            <label className="btn btn-select border-0">{item.content}</label>
+                            <label
+                                htmlFor={i}
+                                className={`${item.isCompleted ? 'checked-label' : ''} btn btn-select border-0`}
+                            >
+                                {item.content}
+                            </label>
                         </div>
                         <button
                             key={i}
