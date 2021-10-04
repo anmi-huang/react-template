@@ -378,4 +378,7 @@ img.fit-contain,
 .trs-x-100{
     transform: translateX(100%);
 }
-
+button:disabled {
+    opacity: 0.5;
+    background-color: #eee ;
+}
